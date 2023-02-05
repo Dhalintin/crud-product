@@ -4,6 +4,7 @@
 
 body {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  background-color: #ddd;
 }
 
 /* Style the header */
@@ -17,13 +18,13 @@ header {
 }
 
 a {
-  background-color: white;
-  color: rgb(73, 17, 224);
+  color: rgb(14, 7, 29);
   padding: 10px 15px;
-  text-align: center;
+  text-align: left;
   text-decoration: none;
   display: inline-block;
   opacity: 80%;
+  font-size: 20px;
 }
 
 a:hover {
@@ -43,7 +44,7 @@ a:hover {
 
 /* Use a media query to add a break point at 800px: */
 @media screen and (max-width:800px) {
-  #head1, .head2 {
+  #head1, header, .head2, nav-right, nav-left {
     width:100%; /* The width is 100%, when the viewport is 800px or smaller */
   }
 }
@@ -51,32 +52,40 @@ a:hover {
 /* Create two columns/boxes that floats next to each other */
 
 nav-left {
-float: left;
-width: 40%;
-padding-left: 10px;
 margin-left: 10%;
-box-sizing: border-box;
+margin-right: 5px;
+/*box-sizing: border-box;*/
+
 }
 
 nav-right {
-  float: left;
-  width: 40%;
   margin-right: 10%;
-  text-align: justify;
+}
+
+nav-right, nav-left {
+  padding-left: 15px;
+  width: 39%;
+  float: left;
+  border: 1px solid #fff;
+  text-align: left;
+}
+
+nav-right:hover, nav-left:hover {
+  background-color: #eee;
 }
 
 img {
-padding-left: 15px;
-width: 80%;
-border-radius: 90%;
+padding-left: 1px;
+width: 40%;
+border-radius: 10%;
 /*opacity: 80%;*/
 }
 
 a img {
-background-color: white;
+/*background-color: white;*/
 margin: 0%;
 padding: 0%;
-width: 90px;
+width: 80px;
 /*border-radius: 100%;*/
 }
 
@@ -99,7 +108,7 @@ color: red;
 
 /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
 @media (max-width: 600px) {
-nav, article {
+nav-right, nav-left, article {
   width: 100%;
   height: auto;
 }

@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
    // $posts = products_table::latest()->get();
 
-    return view('homepage');
+    return view('index');
 });
 
 //Create Route

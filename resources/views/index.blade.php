@@ -21,25 +21,26 @@
     
     <section>
         <nav-left>
-            <a href="/createproduct" id="head1"><img src="images/logo-home.png">reate</a>
-            <p>Create a new product to add to the catalog</p>
+
+            <a href="/createproduct" ><img src="images/letterc2.png">reate
+            <p>Create a new product to add to the catalog</p></a>
         </nav-left>
 
         <nav-right>
-            <a href="#l" id="head1"><img src="images/logo-home.png">ead</a>
-            <p>Check out all the products in stock</p>
+            <a href="#l" id="head1"><img src="images/letterr2.png">ead
+            <p>Check out all the products in stock</p></a>
         </nav-right>
     </section>
 
     <section>
         <nav-left>
-            <a href="#" id="head1"><img src="images/logo-home.png">pdate</a>
-            <p>Update prices and details of products </p>
+            <a href="#" id="head1"><img src="images/letteru2.png">pdate
+            <p>Update prices and details of products </p></a>
         </nav-left>
 
         <nav-right>
-            <a href="#" id="head1"><img src="images/logo-home.png">elete</a>
-            <p>Delete product from database</p>
+            <a href="#" id="head1"><img src="images/letterd.png">elete
+            <p>Delete product from database</p></a>
         </nav-right>
     </section>
 
