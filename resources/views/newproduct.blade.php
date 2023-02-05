@@ -11,7 +11,7 @@
 <body>
     <header>
         <a href="/" id="head1"><img src="images/logo-home.png">usixLuvas</a>
-        <div class="spacing">
+        <div >
             <a href="/" class="head2">Home</a>
             <a href="#" class="head2">Register</a>
             <a href="#" class="head2">Login</a>
