@@ -19,14 +19,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-   // $posts = products_table::latest()->get();
+   
 
     return view('index');
 });
 
+Route::get('/view', function () {
+    $posts = crud::latest()->get();
+ 
+     return view('view', ['posts' => $posts]);
+ });
+
 //Create Route
-Route::get('/createproduct', function () {
-    return view('createproduct');
+Route::get('/create', function () {
+    return view('create');
 });
 
 //Store Route

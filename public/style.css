@@ -27,6 +27,7 @@ a {
   font-size: 20px;
 }
 
+
 a:hover {
   opacity: 100%;
 }
@@ -155,4 +156,12 @@ font-size: medium;
 button[type=Submit]:hover {
 background-color: #0f8d15;
 color: red;
+}
+
+.details, .title {
+  color: red;
+  font-size: large;
+  font-style: italic;
+  padding-right: 15px;
+  margin-right: 48%;
 }

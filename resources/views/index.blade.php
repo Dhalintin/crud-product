@@ -22,12 +22,12 @@
     <section>
         <nav-left>
 
-            <a href="/createproduct" ><img src="images/letterc2.png">reate
+            <a href="/create" ><img src="images/letterc2.png">reate
             <p>Create a new product to add to the catalog</p></a>
         </nav-left>
 
         <nav-right>
-            <a href="#l" id="head1"><img src="images/letterr2.png">ead
+            <a href="/view" id="head1"><img src="images/letterr2.png">ead
             <p>Check out all the products in stock</p></a>
         </nav-right>
     </section>
