@@ -18,47 +18,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-   
+//index route
+Route::get('/', [CrudController::class, 'index']);
 
-    return view('index');
-});
-
-Route::get('/view', function () {
-    $posts = crud::latest()->get();
- 
-     return view('view', ['posts' => $posts]);
- });
+//View Route
+Route::get('/view', [CrudController::class, 'viewproduct']);
 
 //Create Route
-Route::get('/create', function () {
-    return view('create');
-});
+Route::get('/create', [CrudController::class, 'create']);
 
 //Store Route
-Route::post('/createproduct/store', function (Request $request) {
-    
-    $post = new Crud;
+Route::post('/store', [CrudController::class, 'store']);
 
-    //Validation
-    $request->validate([
-        'name' => ['required'],//, 'unique:products_table, name'],
-        'category' => ['required'],
-        'description' => ['required'],
-        'price' => ['required']
-    ]);
+//Create Route
+Route::get('/edit', [CrudController::class, 'edit']);
 
-    
-    $post->name = $request->name;
-    $post->category = $request->category;
-    $post->description = $request->description;
-    $post->price = $request->price;
-
-    $post ->save();
-
-    return redirect()->to('/view');
-});
-
+/*
 
 Route::get('/edit', function (Request $request) {
     $posts = crud::latest()->get();
@@ -72,4 +47,4 @@ Route::get('/delete/{{$post->id}}', function (crud $crud) {
  
     return view('delete', ['posts' => $posts]);
 });
-
+*/

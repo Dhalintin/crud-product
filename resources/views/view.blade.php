@@ -53,6 +53,14 @@
                     ${{ $post->price }}
                 </td><br>
             </tr>
+            <form action="/destroy/{{ $post->id }}" method="POST">
+                <a href="/show/{{ $post->id }}">Show Details</a>
+                <a href="/edit/{{ $post->id }}" >Edit</a>
+    
+                @csrf
+                @method('DELETE')
+                <button type="button" class="btn-btn-danger">Delete</button>
+            </form>
         </div>
         @endforeach
         

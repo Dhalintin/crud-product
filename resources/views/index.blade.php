@@ -34,7 +34,7 @@
 
     <section>
         <nav-left>
-            <a href="#" id="head1"><img src="images/letteru2.png">pdate
+            <a href="edit" id="head1"><img src="images/letteru2.png">pdate
             <p>Update prices and details of products </p></a>
         </nav-left>
 

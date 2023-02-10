@@ -13,6 +13,13 @@ class Crud extends Model
 
 
     protected $table = 'products_table';
+
+    protected $fillable = [
+        'name',
+        'category',
+        'description',
+        'price'
+    ];
 /*
     public static function getuserData(){
         $value = DB::table('products_table')->orderBy('id', '')->get();

@@ -19,7 +19,7 @@
     </header>
 
     <div class="mid">
-    <form action="/createproduct/store" method="POST">
+    <form action="/store" method="POST">
         @csrf
     
         <div>
