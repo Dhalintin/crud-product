@@ -17,7 +17,7 @@
             <a href="#" class="head2">Login</a>
         </div>
     </header>
-        @foreach($posts as $post)
+        @foreach($crud as $post)
         <div class="mid">
 
         {{ $post->id}}
@@ -53,6 +53,8 @@
                     ${{ $post->price }}
                 </td><br>
             </tr>
+            <a href="/edit"><button>Edit</button></a>
+            <a href="/delete"><button>Delete</button></a>
         </div>
         @endforeach
         

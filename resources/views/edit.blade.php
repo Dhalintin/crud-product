@@ -53,6 +53,8 @@
                     ${{ $post->price }}
                 </td><br>
             </tr>
+            <a href="/edit"><button>Edit</button></a>
+            <a href="/delete"><button>Delete</button></a>
         </div>
         @endforeach
         

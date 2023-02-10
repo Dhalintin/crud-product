@@ -56,6 +56,20 @@ Route::post('/createproduct/store', function (Request $request) {
 
     $post ->save();
 
-    return redirect()->to('/');
+    return redirect()->to('/view');
+});
+
+
+Route::get('/edit', function (Request $request) {
+    $posts = crud::latest()->get();
+ 
+    return view('edit', ['posts' => $posts]);
+});
+
+Route::get('/delete/{{$post->id}}', function (crud $crud) {
+
+    $posts = crud::query();
+ 
+    return view('delete', ['posts' => $posts]);
 });
 

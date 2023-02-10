@@ -39,7 +39,7 @@
         </nav-left>
 
         <nav-right>
-            <a href="#" id="head1"><img src="images/letterd.png">elete
+            <a href="/edit" id="head1"><img src="images/letterd.png">elete
             <p>Delete product from database</p></a>
         </nav-right>
     </section>
