@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Crud;
 use Illuminate\Http\Request;
+use Illuminate\Paginator\Pagination;
+
 
 class Crudcontroller extends Controller
 {
@@ -22,7 +24,7 @@ class Crudcontroller extends Controller
 
     //View Products
     Public function viewproduct() {
-        $posts = crud::latest()->get();
+        $posts = crud::latest()->simplepaginate(5);
  
         return view('view', ['posts' => $posts]);
     }
@@ -63,7 +65,7 @@ class Crudcontroller extends Controller
 
         //$post ->save();
 
-        return redirect()->to('/view');
+        return redirect()->to('/view')->with('status', 'Product has been updated successfully');;
     }
 
     /**
@@ -72,44 +74,66 @@ class Crudcontroller extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Crud $crud, $id)
     {
         //
+        $crud = Crud::find($id);
+
+        return view('show', ['post' => $crud]);
        
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Crud  $product
+     * @param  \App\Models\Crud  $crud
      * @return \Illuminate\Http\Response
      */
-    public function edit(Crud $crud)
-    {
-        return view('edit', ['crud' => $crud]);
-    }
+    public function edit(Request $request, $id) {
 
+        $crud = Crud::find($id);
+
+        return view('edit', ['post' => $crud]);
+    }    
+       
+    
+        //Crud $crud,
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Crud  $crud
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Crud $crud)
     {
-        //
+        //Validate
+        $request->validate([
+            'name' => 'required', 'unique',
+            'category' => 'required',
+            'description' => 'required',
+            'price' => 'required'
+        ]);
+
+        //Create data in database
+        $crud->update($request->all());
+
+        //Redirect
+        return redirect()->to('/view')->with('status', 'Product has been updated successfully');//route('products.index')->with('sucessful', 'Product has been updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Crud  $crud
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Crud $crud, $id)
     {
         //
+        Crud::find($id)->delete();
+
+        return redirect()->to('/view')->with('status', 'Product has been deleted successfully');
        
     }
 }

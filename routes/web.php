@@ -30,11 +30,20 @@ Route::get('/create', [CrudController::class, 'create']);
 //Store Route
 Route::post('/store', [CrudController::class, 'store']);
 
-//Create Route
-Route::get('/edit', [CrudController::class, 'edit']);
+//Edit Route
+Route::get('/edit/{id}', [CrudController::class, 'edit']);
+
+//Show Route
+Route::get('/show/{id}', [CrudController::class, 'show']);
+
+//Update Route
+Route::put('/update/{id}', [CrudController::class, 'update']);
+
+//Delete Route
+Route::delete('/delete/{id}', [CrudController::class, 'destroy']);
+
 
 /*
-
 Route::get('/edit', function (Request $request) {
     $posts = crud::latest()->get();
  

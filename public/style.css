@@ -166,3 +166,12 @@ color: red;
   margin-right: 48%;
 }
 
+.titleText{
+  color:red;
+  font-size: large;
+}
+
+.text{
+  color:rgb(29, 9, 75);
+  font-size: x-large;
+}
