@@ -18,7 +18,7 @@
     
             <div>
                 <label for="description">Description</label>
-                <input type="text" name="description" id="description" value="{{ $post->description }}">
+                <textarea  name="description" id="description" rows="10" value="{{ $post->description }}"></textarea> 
             </div>
             <div>
                 <label for="price">Price</label>

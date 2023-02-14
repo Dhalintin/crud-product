@@ -4,7 +4,12 @@
     @if ($message = Session::get('success'))
         {{ $message }}
     @endif
-
+    @if($errors->any())
+        @foreach ($errors->any() as $error)
+           <li> {{ $error }}</li>
+        @endforeach
+        
+    @enderror
     
     <section>
         <nav-left>

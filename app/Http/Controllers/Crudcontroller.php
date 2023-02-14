@@ -53,7 +53,7 @@ class Crudcontroller extends Controller
 
         //Validation
         $request->validate([
-            'name' => ['required'],//, 'unique:products_table, name'],
+            'name' => ['required'],
             'category' => ['required'],
             'description' => ['required'],
             'price' => ['required']
@@ -105,7 +105,7 @@ class Crudcontroller extends Controller
      * @param  \App\Models\Crud  $crud
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Crud $crud)
+    public function update(Request $request, Crud $crud, $id)
     {
         //Validate
         $request->validate([
@@ -115,8 +115,9 @@ class Crudcontroller extends Controller
             'price' => 'required'
         ]);
 
-        //Create data in database
-        $crud->update($request->all());
+        //Update data in database
+        Crud::find($id)->update($request->all());
+        //$crud->update();
 
         //Redirect
         return redirect()->to('/view')->with('status', 'Product has been updated successfully');//route('products.index')->with('sucessful', 'Product has been updated successfully');
