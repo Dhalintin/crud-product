@@ -26,7 +26,7 @@
             </div>
     
             <div>
-                <button type="submit">Update Post</button>
+                <input type="submit">Update Post</button>
             </div>
         </form>
     </div>

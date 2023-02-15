@@ -19,19 +19,19 @@
         </nav-left>
 
         <nav-right>
-            <a href="/view" id="head1"><img src="images/letterr2.png">ead
+            <a href="/view/default" id="head1"><img src="images/letterr2.png">ead
             <p>Check out all the products in stock</p></a>
         </nav-right>
     </section>
 
     <section>
         <nav-left>
-            <a href="/view" id="head1"><img src="images/letteru2.png">pdate
+            <a href="/view/default" id="head1"><img src="images/letteru2.png">pdate
             <p>Update prices and details of products </p></a>
         </nav-left>
 
         <nav-right>
-            <a href="/view" id="head1"><img src="images/letterd.png">elete
+            <a href="/view/default" id="head1"><img src="images/letterd.png">elete
             <p>Delete product from database</p></a>
         </nav-right>
     </section>

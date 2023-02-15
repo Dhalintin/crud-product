@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [CrudController::class, 'index']);
 
 //View Route
-Route::get('/view', [CrudController::class, 'viewproduct']);
+Route::get('/view/{name?}', [CrudController::class, 'viewproduct']);
 
 //Create Route
 Route::get('/create', [CrudController::class, 'create']);
@@ -42,18 +42,6 @@ Route::put('/update/{id}', [CrudController::class, 'update']);
 //Delete Route
 Route::delete('/delete/{id}', [CrudController::class, 'destroy']);
 
+//Filter Route
+Route::get('/filter/{name}', [CrudController::class, 'filter']);
 
-/*
-Route::get('/edit', function (Request $request) {
-    $posts = crud::latest()->get();
- 
-    return view('edit', ['posts' => $posts]);
-});
-
-Route::get('/delete/{{$post->id}}', function (crud $crud) {
-
-    $posts = crud::query();
- 
-    return view('delete', ['posts' => $posts]);
-});
-*/

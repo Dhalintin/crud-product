@@ -17,14 +17,25 @@ class Crudcontroller extends Controller
     
      //Index Route
      Public function index() {
-        $posts = crud::latest()->get();
+       
  
         return view('index');
      }
 
     //View Products
-    Public function viewproduct() {
-        $posts = crud::latest()->simplepaginate(5);
+    Public function viewproduct($name) {
+
+        if($name === "aprice" ){
+            $posts = crud::OrderBy('price')->simplepaginate(5);
+        }elseif($name === "dprice" ){
+            $posts = crud::OrderByDesc('price')->simplepaginate(5);
+        }elseif($name === "acate" ){
+            $posts = crud::OrderBy('category')->simplepaginate(5);
+        }elseif($name === "dcate" ){
+            $posts = crud::OrderByDesc('category')->simplepaginate(5);
+        }else{
+            $posts = crud::latest()->simplepaginate(5);
+        }
  
         return view('view', ['posts' => $posts]);
     }
@@ -96,8 +107,6 @@ class Crudcontroller extends Controller
         return view('edit', ['post' => $crud]);
     }    
        
-    
-        //Crud $crud,
     /**
      * Update the specified resource in storage.
      *
@@ -136,6 +145,14 @@ class Crudcontroller extends Controller
 
         return redirect()->to('/view')->with('status', 'Product has been deleted successfully');
        
+    }
+
+    //Filtering My database
+    public function filter(Request $request, $name) {
+
+        
+
+        return view('view', ['posts' => $posts]);
     }
 }
 
