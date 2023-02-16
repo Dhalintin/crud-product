@@ -18,16 +18,18 @@
     
             <div>
                 <label for="description">Description</label>
-                <textarea  name="description" id="description" rows="10" value="{{ $post->description }}"></textarea> 
+                <textarea  name="description" id="description" rows="10" value="{{ $post->description }}">{{ $post->description }}</textarea> 
             </div>
             <div>
                 <label for="price">Price</label>
                 <input type="number" name="price" id="price" value="{{ $post->price }}">
             </div>
+            
     
             <div>
-                <input type="submit">Update Post</button>
+                <button type="submit">Update</button>
             </div>
+            <br><br><br>
         </form>
     </div>
 @endsection

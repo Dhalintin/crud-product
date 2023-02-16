@@ -146,13 +146,5 @@ class Crudcontroller extends Controller
         return redirect()->to('/view')->with('status', 'Product has been deleted successfully');
        
     }
-
-    //Filtering My database
-    public function filter(Request $request, $name) {
-
-        
-
-        return view('view', ['posts' => $posts]);
-    }
 }
 

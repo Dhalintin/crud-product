@@ -125,9 +125,12 @@ color: red;
   padding: 15px 15px;
 }
 
-.labl {
+label {
 font-size: large;
 text-align: left;
+font-family: Cambria;
+font-size: 20px;
+color: red;
 }
 
 input[type=text], input[type=number], select, textarea {
@@ -139,6 +142,8 @@ border: none;
 border-bottom: 2px solid rgb(14, 12, 12);
 border-radius: 4px;
 box-sizing: border-box;
+font-family: Cambria;
+font-size: 20px;
 }
 
 button[type=Submit] {

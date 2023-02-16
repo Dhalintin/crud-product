@@ -14,8 +14,22 @@
         <div class="spacing">
             <a href="/create" class="head2">Create</a>
             <a href="/view/default" class="head2">Go Back</a>
-            <a href="#" class="head2">Login</a>
-        </div>
+            @if(isset(Auth::user()->name))
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <a href="route('logout')"
+                            onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        {{ __('Log Out') }}
+                </a>
+                </form>
+                
+            @else
+                <a href="{{ route('login') }}" class="head2">Login</a>
+                <a href="{{ route('register') }}" class="head2">Register</a>
+
+        @endif
     </header>
     <div class="container">
         @yield('content')

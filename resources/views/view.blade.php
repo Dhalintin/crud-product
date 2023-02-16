@@ -34,6 +34,14 @@
                         <span class="info">{{ $post->category }}</span>
                     </td><br>
                 </tr>
+                <tr>
+                    <td>
+                        <span class="details">Price:</span> 
+                    </td>
+                    <td>
+                        <span class="info">${{ $post->price }}</span>
+                    </td><br>
+                </tr>
                 
                     <tr>
                         <td><a href="/show/{{ $post->id }}">Show Details</a></td>
