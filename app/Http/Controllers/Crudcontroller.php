@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Crud;
+use App\Http\Controllers\Crudcontroller;
 use Illuminate\Http\Request;
 use Illuminate\Paginator\Pagination;
 

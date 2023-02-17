@@ -9,10 +9,10 @@
 
     <div>
         <span class="filterhead">Filter result by:</span>
-        <a href="//aprice" class="filter">Ascending Price</a>
-        <a href="/filter/dprice" class="filter">Descending price</a>
-        <a href="/filter/acate" class="filter">Ascending Category</a>
-        <a href="/filter/dcat" class="filter">Descending Category</a>
+        <a href="/view/aprice" class="filter">Ascending Price</a>
+        <a href="/view/dprice" class="filter">Descending price</a>
+        <a href="/view/acate" class="filter">Ascending Category</a>
+        <a href="/view/dcat" class="filter">Descending Category</a>
     </div><br><br>
     
         @foreach($posts as $post)
