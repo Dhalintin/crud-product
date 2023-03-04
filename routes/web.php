@@ -17,38 +17,23 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-//index route
-Route::get('/', [CrudController::class, 'index']);
-
-//View Route
-Route::get('/view/{name?}', [CrudController::class, 'viewproduct']);
-
-//Create Route
-Route::get('/create', [CrudController::class, 'create']);
-
-//Store Route
-Route::post('/store', [CrudController::class, 'store']);
-
-//Edit Route
-Route::get('/edit/{id}', [CrudController::class, 'edit'])->middleware(['auth', 'verified']);
-
-//Show Route
-Route::get('/show/{id}', [CrudController::class, 'show']);
-
-//Update Route
-Route::put('/update/{id}', [CrudController::class, 'update']);
-
-//Delete Route
-Route::delete('/delete/{id}', [CrudController::class, 'destroy'])->middleware(['auth', 'verified']);
-
-//Filter Route
-Route::get('/filter/{name}', [CrudController::class, 'filter']);
-
 //Welcome route
 Route::get('welcome', function(){
     return view('welcome');
 });
+
+Route::controller(CrudController::class)->group(function () {
+    Route::get('/','index');
+    Route::get('/view/{name?}', 'viewproduct');
+    Route::get('/create', 'create');
+    Route::post('/store', 'store');
+    Route::get('/edit/{id}', 'edit')->middleware(['auth', 'verified']);
+    Route::get('/show/{id}', 'show');
+    Route::put('/update/{id}', 'update');
+    Route::delete('/delete/{id}', 'destroy')->middleware(['auth', 'verified']);
+    Route::get('/filter/{name}', 'filter');
+});
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Crud;
-use App\Http\Controllers\Crudcontroller;
+use App\Http\Controllers\CrudController;
 use Illuminate\Http\Request;
 use Illuminate\Paginator\Pagination;
 
 
-class Crudcontroller extends Controller
+class CrudController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,7 +23,7 @@ class Crudcontroller extends Controller
         return view('index');
      }
 
-    //View Products
+    
     Public function viewproduct($name) {
 
         if($name === "aprice" ){
@@ -60,10 +60,6 @@ class Crudcontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
-        //$post = new Crud;
-
-        //Validation
         $request->validate([
             'name' => ['required'],
             'category' => ['required'],
@@ -71,11 +67,7 @@ class Crudcontroller extends Controller
             'price' => ['required']
         ]);
 
-        
-        //Create data in database
         Crud::create($request->all());
-
-        //$post ->save();
 
         return redirect()->to('/view')->with('status', 'Product has been updated successfully');;
     }
@@ -88,7 +80,6 @@ class Crudcontroller extends Controller
      */
     public function show(Crud $crud, $id)
     {
-        //
         $crud = Crud::find($id);
 
         return view('show', ['post' => $crud]);
@@ -125,11 +116,8 @@ class Crudcontroller extends Controller
             'price' => 'required'
         ]);
 
-        //Update data in database
         Crud::find($id)->update($request->all());
-        //$crud->update();
 
-        //Redirect
         return redirect()->to('/view')->with('status', 'Product has been updated successfully');//route('products.index')->with('sucessful', 'Product has been updated successfully');
     }
 
@@ -141,11 +129,9 @@ class Crudcontroller extends Controller
      */
     public function destroy(Crud $crud, $id)
     {
-        //
         Crud::find($id)->delete();
 
         return redirect()->to('/view')->with('status', 'Product has been deleted successfully');
-       
     }
 }
 
