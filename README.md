@@ -1,4 +1,4 @@
-<p align="center">CRUD PRODUCT</p>
+# <p align="center">CRUD PRODUCT</p>
 
 <p align="center">This project is a practice laravel project designed as a practice project to learn the basice operations on a site which are Create, Read, Update and Delete shortened to CRUD
 </p>
