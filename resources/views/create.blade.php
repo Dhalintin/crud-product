@@ -11,7 +11,7 @@
     <div class="mid">
         <form action="/store" method="POST">
             @csrf
-        
+           
             <div>
                 <label for="name">NAME:</label>
                 <input type="text" name="name" id="name" required>

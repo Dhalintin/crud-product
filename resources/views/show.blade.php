@@ -31,6 +31,13 @@
                 <div class="text">${{ $post->price }}</div>
                 </td><br>
             </tr>
+            <tr>
+                <td class="details">
+                    <div class="titleText">Posted by:</div>
+                
+                <div class="text">{{ $post->user->name }}</div>
+                </td><br>
+            </tr>
             <form action="/delete/{{ $post->id }}" method="POST">
                 <a href="/edit/{{ $post->id }}" >Edit</a>
     

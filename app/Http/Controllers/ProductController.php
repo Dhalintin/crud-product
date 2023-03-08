@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 
@@ -57,16 +58,22 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        //Validation
         $request->validate([
             'name' => ['required'],
+            //'user_id' = auth()->id(),
             'category' => ['required'],
             'description' => ['required'],
             'price' => ['required']
         ]);
+        
+       // return view('index');
 
+        
+        //Create data in database
         Product::create($request->all());
 
-        return redirect()->to('/view')->with('status', 'Product has been updated successfully');;
+        return redirect()->to('/view/default')->with('status', 'Product has been updated successfully');;
     }
 
     /**
@@ -75,10 +82,12 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $id)
+    public function show(Product $Product, $id)
     {
+        //
+        $Product = Product::find($id);
 
-        return view('show', ['post' => $id]);
+        return view('show', ['post' => $Product]);
        
     }
 
@@ -88,9 +97,11 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $Product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $id) {
+    public function edit(Request $request, $id) {
 
-        return view('edit', ['post' => $id]);
+        $Product = Product::find($id);
+
+        return view('edit', ['post' => $Product]);
     }    
        
     /**
@@ -102,6 +113,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $Product, $id)
     {
+        //Validate
         $request->validate([
             'name' => 'required', 'unique',
             'category' => 'required',
@@ -109,9 +121,12 @@ class ProductController extends Controller
             'price' => 'required'
         ]);
 
+        //Update data in database
         Product::find($id)->update($request->all());
+        //$Product->update();
 
-        return redirect()->to('/view')->with('status', 'Product has been updated successfully');//route('products.index')->with('sucessful', 'Product has been updated successfully');
+        //Redirect
+        return redirect()->to('/view/default')->with('status', 'Product has been updated successfully');//route('products.index')->with('sucessful', 'Product has been updated successfully');
     }
 
     /**
@@ -122,7 +137,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $Product, $id)
     {
-
+        //
         Product::find($id)->delete();
 
         return redirect()->to('/view')->with('status', 'Product has been deleted successfully');

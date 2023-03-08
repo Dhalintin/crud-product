@@ -15,6 +15,10 @@ class Product extends Model
         'description',
         'price'
     ];
+
+    public function User(){
+        return $this->belongsTo('App\Models\User');
+    }
 /*
     public static function getuserData(){
         $value = DB::table('products_table')->orderBy('id', '')->get();

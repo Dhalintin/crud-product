@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::controller(ProductController::class)->group(function () {
     Route::get('/', 'index');
     Route::get('/view/{name?}','viewproduct');
-    Route::get('/create', 'create');
+    Route::get('/create', 'create')->middleware(['auth', 'verified']);
     Route::post('/store', 'store');
     Route::get('/edit/{id}', 'edit')->middleware(['auth', 'verified']);
     Route::get('/show/{id}', 'show');
