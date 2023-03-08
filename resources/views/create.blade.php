@@ -9,7 +9,7 @@
     @enderror
 
     <div class="mid">
-        <form action="/store" method="POST">
+        <form action="/store/{{ $user->id }}" method="POST">
             @csrf
            
             <div>

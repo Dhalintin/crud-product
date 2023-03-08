@@ -12,9 +12,9 @@
     <header>
         <a href="/" id="head1"><img src="../images/logo-home.png">usixLuvas</a>
         <div class="spacing">
-            <a href="/create" class="head2">Create</a>
             <a href="/view/default" class="head2">Go Back</a>
-            @if(isset(Auth::user()->name))
+            @if(Auth::user())
+                <a href="/create/{{ Auth::user()->id }}" class="head2">Create</a>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 

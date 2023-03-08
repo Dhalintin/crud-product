@@ -13,8 +13,8 @@
     
     <section>
         <nav-left>
-
-            <a href="/create" ><img src="images/letterc2.png">reate
+           
+            <a  @if (Auth::user())href="/create/{{ Auth::user()->id }}" @endif><img src="images/letterc2.png">reate
             <p>Create a new product to add to the catalog</p></a>
         </nav-left>
 

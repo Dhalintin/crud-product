@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
@@ -44,10 +45,10 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(User $id)
     {
-        //
-        return view('create');
+
+        return view('create', ['user' => $id]);
     }
 
     /**
@@ -56,22 +57,43 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
+        $product = new Product;
+
+        
+        $this->validate($request, array(
+            'name' => 'required',
+            'category' => 'required',
+            'description' => 'required',
+            'price' => 'required'
+        ));
+       
+
+        
+        
+        $product->name = $request->name;
+        $product->user_id = $id;
+        $product->category = $request->category;
+        $product->description = $request->description;
+        $product->price  = $request->price;
+
+        $product->save();
+
+        /*
         //Validation
         $request->validate([
             'name' => ['required'],
-            //'user_id' = auth()->id(),
+            'user_id' => ['required'],
             'category' => ['required'],
             'description' => ['required'],
             'price' => ['required']
         ]);
-        
-       // return view('index');
 
+        */
         
         //Create data in database
-        Product::create($request->all());
+        //Product::create($request->all());
 
         return redirect()->to('/view/default')->with('status', 'Product has been updated successfully');;
     }
@@ -82,12 +104,9 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $Product, $id)
+    public function show(Product $id)
     {
-        //
-        $Product = Product::find($id);
-
-        return view('show', ['post' => $Product]);
+        return view('show', ['post' => $id]);
        
     }
 
