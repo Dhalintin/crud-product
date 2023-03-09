@@ -20,11 +20,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(ProductController::class)->group(function () {
     Route::get('/', 'index');
+    Route::get('/dashboard', 'index');
     Route::get('/view/{name?}','viewproduct');
     Route::get('/create/{id}', 'create')->middleware(['auth', 'verified']);
     Route::post('/store/{id}', 'store')->middleware(['auth', 'verified']);
     Route::get('/edit/{id}', 'edit')->middleware(['auth', 'verified']);
-    Route::get('/show/{id}', 'show')->middleware(['auth', 'verified']);
+    Route::get('/show/{id}', 'show');
     Route::put('/update/{id}', 'update');
     Route::delete('/delete/{id}', 'destroy')->middleware(['auth', 'verified']);
     Route::get('/filter/{name}', 'filter');
@@ -36,11 +37,12 @@ Route::controller(ProductController::class)->group(function () {
 Route::get('welcome', function(){
     return view('welcome');
 });
-
+/*
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $posts = Product::latest()->simplepaginate(5);
+    return view('index');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
+*/
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

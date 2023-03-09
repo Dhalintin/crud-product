@@ -17,24 +17,25 @@ class ProductController extends Controller
      */
      //Index Route
      Public function index() {
+        $posts = Product::latest()->simplepaginate(6);
        
  
-        return view('index');
+        return view('index', ['posts' => $posts]);
      }
 
     //View Products
     Public function viewproduct($name) {
 
         if($name === "aprice" ){
-            $posts = Product::OrderBy('price')->simplepaginate(5);
+            $posts = Product::OrderBy('price')->simplepaginate(6);
         }elseif($name === "dprice" ){
-            $posts = Product::OrderByDesc('price')->simplepaginate(5);
+            $posts = Product::OrderByDesc('price')->simplepaginate(6);
         }elseif($name === "acate" ){
-            $posts = Product::OrderBy('category')->simplepaginate(5);
+            $posts = Product::OrderBy('category')->simplepaginate(6);
         }elseif($name === "dcate" ){
-            $posts = Product::OrderByDesc('category')->simplepaginate(5);
+            $posts = Product::OrderByDesc('category')->simplepaginate(6);
         }else{
-            $posts = Product::latest()->simplepaginate(5);
+            $posts = Product::latest()->simplepaginate(6);
         }
  
         return view('view', ['posts' => $posts]);
@@ -60,7 +61,7 @@ class ProductController extends Controller
     public function store(Request $request, $id)
     {
         $product = new Product;
-
+        
         
         $this->validate($request, array(
             'name' => 'required',
@@ -79,21 +80,6 @@ class ProductController extends Controller
         $product->price  = $request->price;
 
         $product->save();
-
-        /*
-        //Validation
-        $request->validate([
-            'name' => ['required'],
-            'user_id' => ['required'],
-            'category' => ['required'],
-            'description' => ['required'],
-            'price' => ['required']
-        ]);
-
-        */
-        
-        //Create data in database
-        //Product::create($request->all());
 
         return redirect()->to('/view/default')->with('status', 'Product has been updated successfully');;
     }
