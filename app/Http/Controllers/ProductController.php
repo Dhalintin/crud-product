@@ -38,7 +38,7 @@ class ProductController extends Controller
             $posts = Product::latest()->simplepaginate(6);
         }
  
-        return view('view', ['posts' => $posts]);
+        return view('index', ['posts' => $posts]);
     }
 
     /**

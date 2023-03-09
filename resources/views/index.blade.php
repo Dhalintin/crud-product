@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('content')
+
     <div class="grid md:grid-cols-2">        
         <main class="px-16 py-6 pb-2 md:col-span-2">                 
             <div class="mt-8 grid md:grid-cols-3 gap-3">
@@ -22,15 +23,19 @@
                             <div class="inline pl-52"><a href="/show/{{ $post->id }}">...See Details</a></div>
                         </div>
                     </div>
-                
                 @endforeach
 
-                        </div>
-                        
-                    </div>
-                    
-                </main>
-        </div>
+            </div>                        
+        </main>
+    </div>
+    <div class="flex justify-center p-3">
+        <div class="pt-2 pr-2">Sort by:</div>
+        <a href="/view/aprice" class="border rounded-full p-2 border-red-400 text-red-400 bg-gray-200 hover:bg-red-300 dark:bg-slate-800 hover:text-gray-100 m-1">Ascending Price</a>
+        <a href="/view/dprice" class="border rounded-full p-2 border-red-400 text-red-400 bg-gray-200 hover:bg-red-300 dark:bg-slate-800 hover:text-gray-100 m-1">Descending price</a>
+        <a href="/view/acate" class="border rounded-full p-2 border-red-400 text-red-400 bg-gray-200 hover:bg-red-300 dark:bg-slate-800 hover:text-gray-100 m-1">Ascending Category</a>
+        <a href="/view/dcat" class="border rounded-full p-2 border-red-400 text-red-400 bg-gray-200 hover:bg-red-300 dark:bg-slate-800 hover:text-gray-100 m-1">Descending Category</a>
+        
+    </div>
 
     <div class="flex justify-center p-3">
         {{ $posts->links() }}
