@@ -19,7 +19,7 @@
         </div>
 
         <div class="lg:col-span-1 pl-12 bg-gray-200  dark:bg-slate-800 border rounded-lg ml-12 p-8 border-red-200 ">
-            <form action="/store/{{ $user->id }}" method="POST">
+            <form action="{{ route('store') }}" method="POST">
                 @csrf
                     <p class="pb-5 text-2xl text-blue-400">Add New product</p>
                     <div class="pb-5">

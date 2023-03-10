@@ -26,7 +26,7 @@
 
                 <div class="flex justify-center md:justify-end" id="menu">
                 @if(Auth::user())
-                    <div class="rounded-full py-2 px-3 text-xs font-bold cursor-pointer tracking-wider text-red-400 border-red-400 md:border-2 hover:bg-red-400 hover:text-white transition ease-out duration-1000"><a  href="/create/{{ Auth::user()->id }}">Create</a>
+                    <div class="rounded-full py-2 px-3 text-xs font-bold cursor-pointer tracking-wider text-red-400 border-red-400 md:border-2 hover:bg-red-400 hover:text-white transition ease-out duration-1000"><a  href="{{ route('create') }}">Create</a>
                     </div>
 
                     <div class="rounded-full py-2 px-3 text-xs uppercase font-bold cursor-pointer tracking-wider text-red-400 border-red-400 md:border-2 hover:bg-red-400 hover:text-white transition ease-out duration-1000">

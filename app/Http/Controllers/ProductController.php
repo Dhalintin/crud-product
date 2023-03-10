@@ -57,12 +57,12 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProductRequest $request, $id)
+    public function store(StoreProductRequest $request)
     {
         $product = new Product;
         
         $product->name = $request->validated('name');
-        $product->user_id = $id;
+        $product->user_id = request()->user()->id;
         $product->category = $request->validated('category');
         $product->description = $request->validated('description');
         $product->price  = $request->validated('price');
@@ -105,13 +105,6 @@ class ProductController extends Controller
      */
     public function update(StoreProductRequest $request,  $id)
     {
-        // $request->validate([
-        //     'name' => 'required', 'unique',
-        //     'category' => 'required',
-        //     'description' => 'required',
-        //     'price' => 'required'
-        // ]);
-
         $product = $request->validated();
 
         Product::find($id)->update($request->all());
