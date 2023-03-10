@@ -50,13 +50,7 @@ Copy the content .env.example in the .env
 
 Configure the <code>.env</code> file
 
-Run the migration and seed the database
-
-<code>php artisan migrate</code>
-
-<code>php artisan seed</code>
-
-or run to perfrom both command in one step
+Run the migration and seed the database in one step
 
 <code>php artisan migrate:fresh --seed</code>
 
