@@ -19,16 +19,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::controller(ProductController::class)->group(function () {
-    Route::get('/', 'index');
+    Route::get('/', 'index')->name('home');
     Route::get('/dashboard', 'index');
     Route::get('/view/{name?}','viewproduct');
     Route::get('/create/{id}', 'create')->middleware(['auth', 'verified']);
     Route::post('/store/{id}', 'store')->middleware(['auth', 'verified']);
-    Route::get('/edit/{id}', 'edit')->middleware(['auth', 'verified']);
-    Route::get('/show/{id}', 'show');
-    Route::put('/update/{id}', 'update');
-    Route::delete('/delete/{id}', 'destroy')->middleware(['auth', 'verified']);
-    Route::get('/filter/{name}', 'filter');
+    Route::get('/edit/{product}', 'edit')->middleware(['auth', 'verified']);
+    Route::get('/show/{product}', 'show');
+    Route::put('/update/{product}', 'update');
+    Route::delete('/delete/{product}', 'destroy')->middleware(['auth', 'verified']);
+    Route::get('/filter/{type}/{value}', 'filter')->name('filter');
 
 });
 

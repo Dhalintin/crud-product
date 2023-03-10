@@ -16,7 +16,7 @@
             <nav class="text-right md:col-span-1">
                 <div class="flex justify-between items-center">
                     <h1 class="font-bold uppercase p-4">
-                        <a href="/" class="hover:text-gray-700 w-3"><img src="../images/logo-home.png"></a>
+                        <a href="{{ route('home') }}" class="hover:text-gray-700 w-3"><img src="/images/logo-home.png"></a>
                     </h1>
                 </div>
             </nav>

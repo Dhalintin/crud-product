@@ -16,29 +16,28 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
      //Index Route
-     Public function index() {
-        $posts = Product::latest()->simplepaginate(6);
-       
- 
-        return view('index', ['posts' => $posts]);
+     Public function index()
+    {        
+        $products = Product::latest()->simplepaginate(6);
+        return view('index', compact('products'));
      }
 
     //View Products
-    Public function viewproduct($name) {
+    Public function filter($type, $value) {
 
-        if($name === "aprice" ){
-            $posts = Product::OrderBy('price')->simplepaginate(6);
-        }elseif($name === "dprice" ){
-            $posts = Product::OrderByDesc('price')->simplepaginate(6);
-        }elseif($name === "acate" ){
-            $posts = Product::OrderBy('category')->simplepaginate(6);
-        }elseif($name === "dcate" ){
-            $posts = Product::OrderByDesc('category')->simplepaginate(6);
+        if($type === "price" ){
+            $orderby = ($value === 'ascending')? 'asc' : 'desc';
+            $result = Product::orderBy('price', $orderby);
+        }elseif($type === "category" ){
+            $orderby = ($value === 'ascending')? 'asc' : 'desc';
+            $result = Product::orderBy('category', $orderby);
         }else{
-            $posts = Product::latest()->simplepaginate(6);
+            $result = Product::latest();
         }
+
+        $products = $result->simplepaginate(6);
  
-        return view('index', ['posts' => $posts]);
+        return view('index', compact('products'));
     }
 
     /**
@@ -62,16 +61,12 @@ class ProductController extends Controller
     {
         $product = new Product;
         
-        
         $this->validate($request, array(
             'name' => 'required',
             'category' => 'required',
             'description' => 'required',
             'price' => 'required'
         ));
-       
-
-        
         
         $product->name = $request->name;
         $product->user_id = $id;
@@ -90,9 +85,9 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $id)
+    public function show(Product $product)
     {
-        return view('show', ['post' => $id]);
+        return view('show', compact('product'));
        
     }
 
@@ -102,11 +97,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $Product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, $id) {
-
-        $Product = Product::find($id);
-
-        return view('edit', ['post' => $Product]);
+    public function edit(Request $request, $product)
+    {
+        $product = Product::find($product);
+        return view('edit', compact('product'));
     }    
        
     /**
@@ -116,9 +110,8 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $Product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $Product, $id)
+    public function update(Request $request,  $id)
     {
-        //Validate
         $request->validate([
             'name' => 'required', 'unique',
             'category' => 'required',
@@ -126,12 +119,9 @@ class ProductController extends Controller
             'price' => 'required'
         ]);
 
-        //Update data in database
         Product::find($id)->update($request->all());
-        //$Product->update();
 
-        //Redirect
-        return redirect()->to('/view/default')->with('status', 'Product has been updated successfully');//route('products.index')->with('sucessful', 'Product has been updated successfully');
+        return redirect()->to('/')->with('status', 'Product has been updated successfully');
     }
 
     /**
@@ -140,12 +130,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $Product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $Product, $id)
+    public function destroy(Product $product)
     {
-        //
-        Product::find($id)->delete();
-
-        return redirect()->to('/view')->with('status', 'Product has been deleted successfully');
+        $product->delete();
+        return redirect()->to('')->with('status', 'Product has been deleted successfully');
        
     }
 }

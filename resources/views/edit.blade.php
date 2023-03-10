@@ -19,22 +19,22 @@
         </div>
 
         <div class="lg:col-span-1 pl-12 bg-gray-200  dark:bg-slate-800 border rounded-lg ml-12 p-8 border-red-200 ">
-            <form action="/update/{{ $post->id }}" method="POST">
+            <form action="/update/{{ $product->id }}" method="POST">
                 @csrf
                 @method('PUT')
                     <p class="pb-5 text-2xl text-blue-400">Add New product</p>
                     <div class="pb-5">
-                        <input type="text" name="name" id="name" value="{{ $post->name }}"class="border border-gray-300 text-sm rounded-lg  md:block md:w-full w-96 p-2.5 dark:border-blue-400 dark:bg-gray-700 dark:text-gray-200 pb-5" required>
+                        <input type="text" name="name" id="name" value="{{ $product->name }}"class="border border-gray-300 text-sm rounded-lg  md:block md:w-full w-96 p-2.5 dark:border-blue-400 dark:bg-gray-700 dark:text-gray-200 pb-5" required>
                     </div> 
                     <div class="pb-5">
-                        <input type="text" name="category" id="category" value="{{ $post->category }}" class="border border-gray-300 text-sm rounded-lg  md:block md:w-full w-96 p-2.5 dark:border-blue-400 dark:bg-gray-700 dark:text-gray-200 pb-5" placeholder="Category" required>
+                        <input type="text" name="category" id="category" value="{{ $product->category }}" class="border border-gray-300 text-sm rounded-lg  md:block md:w-full w-96 p-2.5 dark:border-blue-400 dark:bg-gray-700 dark:text-gray-200 pb-5" placeholder="Category" required>
                     </div> 
                     <div class="pb-5">
-                        <textarea  name="description" id="description" rows="5" value="{{ $post->description }}" class="border border-gray-300 text-sm rounded-lg  md:block md:w-full w-96 p-2.5 dark:border-blue-400 dark:bg-gray-700 dark:text-gray-200 mb8" placeholder="Description" required>{{ $post->description }}</textarea>
+                        <textarea  name="description" id="description" rows="5" value="{{ $product->description }}" class="border border-gray-300 text-sm rounded-lg  md:block md:w-full w-96 p-2.5 dark:border-blue-400 dark:bg-gray-700 dark:text-gray-200 mb8" placeholder="Description" required>{{ $product->description }}</textarea>
                     </div> 
                     <div class="pb-5">
                     
-                        <input type="number" name="price" id="price" value="{{ $post->price }}" class="border border-gray-300 text-sm rounded-lg  md:block md:w-full w-96 p-2.5 dark:border-blue-400 dark:bg-gray-700 dark:text-gray-200" placeholder="Price" required>
+                        <input type="number" name="price" id="price" value="{{ $product->price }}" class="border border-gray-300 text-sm rounded-lg  md:block md:w-full w-96 p-2.5 dark:border-blue-400 dark:bg-gray-700 dark:text-gray-200" placeholder="Price" required>
                     </div> 
                     <div class="pb-5">
         
