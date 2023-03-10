@@ -1,5 +1,4 @@
-@extends('/layout')
-
+@extends('products/layout')
 @section('content')
 @if($errors->any())
         @foreach ($errors as $error)

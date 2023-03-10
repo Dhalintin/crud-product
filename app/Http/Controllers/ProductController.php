@@ -19,7 +19,7 @@ class ProductController extends Controller
      Public function index()
     {        
         $products = Product::latest()->simplepaginate(6);
-        return view('index', compact('products'));
+        return view('products/index', compact('products'));
      }
 
     //View Products
@@ -37,7 +37,7 @@ class ProductController extends Controller
 
         $products = $result->simplepaginate(6);
  
-        return view('index', compact('products'));
+        return view('products/index', compact('products'));
     }
 
     /**
@@ -48,7 +48,7 @@ class ProductController extends Controller
     public function create(User $id)
     {
 
-        return view('create', ['user' => $id]);
+        return view('products/create', ['user' => $id]);
     }
 
     /**
@@ -57,26 +57,19 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(StoreProductRequest $request, $id)
     {
         $product = new Product;
         
-        $this->validate($request, array(
-            'name' => 'required',
-            'category' => 'required',
-            'description' => 'required',
-            'price' => 'required'
-        ));
-        
-        $product->name = $request->name;
+        $product->name = $request->validated('name');
         $product->user_id = $id;
-        $product->category = $request->category;
-        $product->description = $request->description;
-        $product->price  = $request->price;
+        $product->category = $request->validated('category');
+        $product->description = $request->validated('description');
+        $product->price  = $request->validated('price');
 
         $product->save();
 
-        return redirect()->to('/view/default')->with('status', 'Product has been updated successfully');;
+        return redirect()->route('home')->with('status', 'Product has been updated successfully');;
     }
 
     /**
@@ -87,7 +80,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('show', compact('product'));
+        return view('products/show', compact('product'));
        
     }
 
@@ -100,7 +93,7 @@ class ProductController extends Controller
     public function edit(Request $request, $product)
     {
         $product = Product::find($product);
-        return view('edit', compact('product'));
+        return view('products/edit', compact('product'));
     }    
        
     /**
@@ -110,18 +103,20 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $Product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,  $id)
+    public function update(StoreProductRequest $request,  $id)
     {
-        $request->validate([
-            'name' => 'required', 'unique',
-            'category' => 'required',
-            'description' => 'required',
-            'price' => 'required'
-        ]);
+        // $request->validate([
+        //     'name' => 'required', 'unique',
+        //     'category' => 'required',
+        //     'description' => 'required',
+        //     'price' => 'required'
+        // ]);
+
+        $product = $request->validated();
 
         Product::find($id)->update($request->all());
 
-        return redirect()->to('/')->with('status', 'Product has been updated successfully');
+        return redirect()->route('home')->with('status', 'Product has been updated successfully');
     }
 
     /**
@@ -133,7 +128,8 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->to('')->with('status', 'Product has been deleted successfully');
+        
+        return redirect()->route('home')->with('status', 'Product has been deleted successfully');
        
     }
 }

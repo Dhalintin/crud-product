@@ -1,10 +1,10 @@
-@extends('/layout')
+@extends('products/layout')
 
 @section('content')
 
     <div class="grid md:grid-cols-4 mt-8 ml-32 mr-8">        
-        <main class="px-16 py-6 pb-2 md:col-span-3  bg-gray-200 dark:bg-slate-900">                 
-            <div class=" grid md:grid-cols-2 pl-8 rounded ">
+        <main class="px-16 py-6 pb-2 md:col-span-3  bg-gray-100 dark:bg-slate-800 rounded-lg">                 
+            <div class=" grid md:grid-cols-2 pl-8 ">
                 <div class="pb-2 txt-md font-semibold italic">Product's Name: </div>
                 <div class="pb-2 text-lg text-blue-400 font-bold">{{ $product->name }}</div>
                 <div class="pb-2 txt-md font-semibold italic">Category:</div> 
