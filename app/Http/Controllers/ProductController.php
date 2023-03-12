@@ -18,7 +18,7 @@ class ProductController extends Controller
      //Index Route
      Public function index()
     {        
-        $products = Product::latest()->simplepaginate(6);
+        $products = Product::latest('updated_at')->paginate(6);
         return view('products/index', compact('products'));
      }
 
@@ -35,7 +35,7 @@ class ProductController extends Controller
             $result = Product::latest();
         }
 
-        $products = $result->simplepaginate(6);
+        $products = $result->paginate(6);
  
         return view('products/index', compact('products'));
     }
@@ -47,7 +47,6 @@ class ProductController extends Controller
      */
     public function create(User $id)
     {
-
         return view('products/create', ['user' => $id]);
     }
 
@@ -81,7 +80,6 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         return view('products/show', compact('product'));
-       
     }
 
     /**
@@ -92,6 +90,7 @@ class ProductController extends Controller
      */
     public function edit(Request $request, $product)
     {
+        
         $product = Product::find($product);
         return view('products/edit', compact('product'));
     }    
@@ -103,10 +102,12 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $Product
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreProductRequest $request,  $id)
+    public function update(UpdateProductRequest $request,  $id)
     {
+        if($request->user()->cannot('update', $id)) {
+            abort('403');
+        }
         $product = $request->validated();
-
         Product::find($id)->update($request->all());
 
         return redirect()->route('home')->with('status', 'Product has been updated successfully');

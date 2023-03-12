@@ -10,26 +10,27 @@
     <!--script-->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-light dark:bg-dark bg-cover dark:text-gray-300">
+<body class="body">
     <!--Content Wrapper-->
     <div class="grid md:grid-cols-2">
-            <nav class="text-right md:col-span-1">
-                <div class="flex justify-between items-center">
-                    <h1 class="font-bold uppercase p-4">
-                        <a href="{{ route('home') }}" class="hover:text-gray-700 w-3"><img src="/images/logo-home.png"></a>
-                    </h1>
-                </div>
-            </nav>
+        <nav class="text-right md:col-span-1">
+            <div class="flex justify-between items-center">
+                <h1 class="font-bold uppercase p-4">
+                    <a href="{{ route('home') }}" class="hover:text-gray-700 w-3"><img src="/images/logo-home.png"></a>
+                </h1>
+            </div>
+        </nav>
 
-            <main class="px-16 py-6 pb-2 md:col-span-1">
-                
-
-                <div class="flex justify-center md:justify-end" id="menu">
+        <main class="px-16 py-6 pb-2 md:col-span-1">
+            <div class="flex justify-center md:justify-end" id="menu">
                 @if(Auth::user())
-                    <div class="rounded-full py-2 px-3 text-xs font-bold cursor-pointer tracking-wider text-red-400 border-red-400 md:border-2 hover:bg-red-400 hover:text-white transition ease-out duration-1000"><a  href="{{ route('create') }}">Create</a>
+                    <div class="btn">
+                        <a href="{{ route('profile.edit') }}">Profile</a>
+                    </div> 
+                    <div class="btn"><a  href="{{ route('create') }}">Create</a>
                     </div>
 
-                    <div class="rounded-full py-2 px-3 text-xs uppercase font-bold cursor-pointer tracking-wider text-red-400 border-red-400 md:border-2 hover:bg-red-400 hover:text-white transition ease-out duration-1000">
+                    <div class="btn">
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
                             <button type="submit" >
@@ -38,11 +39,11 @@
                         </form>
                     </div>
                 @else
-                    <a href="{{ route('login') }}" class="rounded-full py-2 px-3 text-xs uppercase font-bold cursor-pointer tracking-wider text-red-400 border-red-400 md:border-2 hover:bg-red-400 hover:text-white transition ease-out duration-1000">Log in</a>
-                    <a href="{{ route('register') }}" class="rounded-full py-2 px-3 text-xs uppercase font-bold cursor-pointer tracking-wider text-red-400  ml-2 border-red-500 md:border-2 hover:bg-red-400 hover:text-white transition ease-out duration-1000">Sign up</a>
+                    <a href="{{ route('login') }}" class="btn">Log in</a>
+                    <a href="{{ route('register') }}" class="btn">Sign up</a>
                 @endif
-                </div>
-            </main>
+            </div>
+        </main>
     </div>
 
     <div class="container cols-span-2">
@@ -58,7 +59,6 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
                     </svg>
                 </a>
-            
 
                 <a href=""><span>About</span>
                     <svg class="w-5 ml-2 md:inline" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

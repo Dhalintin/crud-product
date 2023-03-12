@@ -8,8 +8,8 @@
         
     @enderror
     <div class="grid lg:grid-cols-3">
-        <div class="lg:col-span-2 pl-14 mr-32 text-justify">
-            <h1 class="pb-12 text-3xl text-blue-500 mt-16 font-bold">How to sell your product</h1>
+        <div class="info-col">
+            <h1 class="title">How to sell your product</h1>
             <p class="pb-3 text-justify italic">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quo, esse fugiat sed natus commodi cumque? Cumque consequuntur perspiciatis illo sunt, amet sequi eaque nostrum porro culpa fugit debitis eos architecto, dicta non repudiandae facilis excepturi labore in. Error magni nisi ipsam molestias delectus possimus quae suscipit animi beatae eum.
             </p>
@@ -18,26 +18,26 @@
             </p>
         </div>
 
-        <div class="lg:col-span-1 pl-12 bg-gray-200  dark:bg-slate-800 border rounded-lg ml-12 p-8 border-red-200 ">
+        <div class="form ">
             <form action="{{ route('store') }}" method="POST">
                 @csrf
                     <p class="pb-5 text-2xl text-blue-400">Add New product</p>
                     <div class="pb-5">
-                    <input type="text" name="name" id="name" class="border border-gray-300 text-sm rounded-lg  md:block md:w-full w-96 p-2.5 dark:border-blue-400 dark:bg-gray-700 dark:text-gray-200 pb-5" placeholder="Product Name" required>
+                    <input type="text" name="name" id="name" class="form-input pb-5" placeholder="Product Name" required>
                     </div> 
                     <div class="pb-5">
-                    <input type="text" name="category" id="category" class="border border-gray-300 text-sm rounded-lg  md:block md:w-full w-96 p-2.5 dark:border-blue-400 dark:bg-gray-700 dark:text-gray-200 pb-5" placeholder="Category" required>
+                    <input type="text" name="category" id="category" class="form-input pb-5" placeholder="Category" required>
                     </div> 
                     <div class="pb-5">
-                    <textarea  name="description" id="description" rows="5" class="border border-gray-300 text-sm rounded-lg  md:block md:w-full w-96 p-2.5 dark:border-blue-400 dark:bg-gray-700 dark:text-gray-200 mb8" placeholder="Description" required></textarea>
+                    <textarea  name="description" id="description" rows="5" class="form-input mb8" placeholder="Description" required></textarea>
                     </div> 
                     <div class="pb-5">
                     
-                    <input type="number" name="price" id="price" class="border border-gray-300 text-sm rounded-lg  md:block md:w-full w-96 p-2.5 dark:border-blue-400 dark:bg-gray-700 dark:text-gray-200" placeholder="Price" required>
+                    <input type="number" name="price" id="price" class="form-input" placeholder="Price" required>
                     </div> 
                     <div class="pb-5">
         
-                    <button type="submit" class="border border-gray-300 text-sm text-white rounded-lg  block md:w-full w-72 p-2.5 bg-blue-500 text-center mb-8 dark:bg-slate-800 dark:text-gray-400 cursor-pointer" >Create</button></div>
+                    <button type="submit" class="submit-btn" >Create</button></div>
             </form>
         </div>
         
