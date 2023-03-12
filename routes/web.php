@@ -20,15 +20,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(ProductController::class)->group(function () {
     Route::get('/', 'index')->name('home');
-    Route::get('/dashboard', 'index');
-    Route::get('/view/{name?}','viewproduct');
-    Route::get('/create/{id}', 'create')->middleware(['auth', 'verified']);
-    Route::post('/store/{id}', 'store')->middleware(['auth', 'verified']);
-    Route::get('/edit/{product}', 'edit')->middleware(['auth', 'verified']);
-    Route::get('/show/{product}', 'show');
-    Route::put('/update/{product}', 'update');
-    Route::delete('/delete/{product}', 'destroy')->middleware(['auth', 'verified']);
-    Route::get('/filter/{type}/{value}', 'filter')->name('filter');
+    Route::get('/dashboard', 'index')->name('dashboard');
+    
+    Route::prefix('product')->group(function () {
+        Route::get('/view/{name?}','viewproduct');
+        Route::get('/create', 'create')->middleware(['auth', 'verified'])->name('create');
+        Route::post('/store', 'store')->middleware(['auth', 'verified'])->name('store');
+        Route::get('/edit/{product}', 'edit')->middleware(['auth', 'verified'])->name('edit');
+        Route::get('/show/{product}', 'show')->name('show');
+        Route::put('/update/{product}', 'update')->name('updat');
+        Route::delete('/delete/{product}', 'destroy')->middleware(['auth', 'verified']);
+        Route::get('/filter/{type}/{value}', 'filter')->name('filter');
+       
+    });
+    
 
 });
 
@@ -37,12 +42,7 @@ Route::controller(ProductController::class)->group(function () {
 Route::get('welcome', function(){
     return view('welcome');
 });
-/*
-Route::get('/dashboard', function () {
-    $posts = Product::latest()->simplepaginate(5);
-    return view('index');
-})->middleware(['auth', 'verified'])->name('dashboard');
-*/
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
