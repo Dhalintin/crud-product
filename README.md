@@ -14,7 +14,9 @@
 You can get the app by cloning it to your local repo using the git clone command
 See the Github documentation to learn more about cloning repos or enter
 
-<code>git clone https://github.com/Dhalintin/crud-product.git</code>
+```shell
+    git clone https://github.com/Dhalintin/crud-product.git
+```
 
 ## Requirement
 
@@ -52,7 +54,7 @@ And fund them
 Create a .env file
 
 ```shell
-    touch .env</code>
+    touch .env
 ```
 
 Copy the content .env.example in the .env
