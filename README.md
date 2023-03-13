@@ -42,7 +42,10 @@ And fund them
 
 Create a .env file
 
-<code>touch .env</code>
+
+```shell
+touch .env
+```
 
 Copy the content .env.example in the .env
 
