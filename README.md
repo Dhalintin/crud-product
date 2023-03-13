@@ -29,40 +29,51 @@ See the Github documentation to learn more about cloning repos or enter
 
 After Cloning this repo enter into the folder
 
-<code>cd crud-product</code>
+```shell
+cd crud-product
+```
 
 Run the follwoing command to install all neccesary dependencies
 
-<code>composer install</code>
-<code>npm install</code>
+```shell
+composer install
+```
+
+```shell
+npm install
+```
 
 And fund them
 
-<code> npm fund</code>
+```shell
+    npm fund
+```
 
 Create a .env file
 
-<code>touch .env</code>
+```shell
+    touch .env</code>
+```
 
 Copy the content .env.example in the .env
 
-<code>cp .env.example .env</code>
+```shell
+    cp .env.example .env
+```
 
 Configure the <code>.env</code> file
 
-Run the migration and seed the database
+Run the migration and seed the database in one step
 
-<code>php artisan migrate</code>
-
-<code>php artisan seed</code>
-
-or run to perfrom both command in one step
-
-<code>php artisan migrate:fresh --seed</code>
+```shell
+    php artisan migrate:fresh --seed</code>
+```
 
 ## Start your server
 
-<code>php artisan serve</code>
+```shell
+    php artisan serve
+```
 
 ## License
 
