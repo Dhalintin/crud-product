@@ -44,7 +44,7 @@ Create a .env file
 
 
 ```shell
-touch .env
+    touch .env</code>
 ```
 
 Copy the content .env.example in the .env
