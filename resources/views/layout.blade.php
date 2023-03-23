@@ -81,7 +81,18 @@
         
     </footer>
 </body>
+<script>
+    const txt = document.querySelector('#text');
+    const btn = document.querySelector('#btn');
 
-</html>
-</body>
+    btn.addEventListener('click', ()=> {
+        if(txt.classList.contains('hidden')){
+            txt.classList.remove('hidden');
+            btn.textContent = 'Hide';
+        }else{
+            txt.classList.add('hidden');
+            btn.textContent = 'Show';
+        }
+    })
+</script>
 </html>
