@@ -17,7 +17,7 @@
                 <div class="pb-4">{{ $product->user->name }}</div>
 
                 @can('view', $product)
-                    <div class="p-4 border-none  rounded-2xl"><a href="/edit/{{ $product->id }}" class="p-3 pl-5 pr-5 border rounded-2xl mr-64  border-slate-700">Edit</a></div>
+                    <div class="p-4 border-none  rounded-2xl"><a href="{{ route('edit', ['product' => $product->id]) }}" class="p-3 pl-5 pr-5 border rounded-2xl mr-64  border-slate-700">Edit</a></div>
                     <form action="/delete/{{ $product->id }}" method="POST">
                         @csrf
                         @method('DELETE')

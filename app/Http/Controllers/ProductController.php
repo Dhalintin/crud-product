@@ -102,13 +102,13 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $Product
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProductRequest $request,  $id)
+    public function update(UpdateProductRequest $request, Product $product)
     {
-        if($request->user()->cannot('update', $id)) {
-            abort('403');
+        if($request->user()->cannot('update', $product)) {
+           abort(403);
         }
-        $product = $request->validated();
-        Product::find($id)->update($request->all());
+        
+        $product = $product->update($request->validated());
 
         return redirect()->route('home')->with('status', 'Product has been updated successfully');
     }
@@ -121,6 +121,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        if($request->user()->can('delete', $product)) {
+            abort('403');
+        }
         $product->delete();
         
         return redirect()->route('home')->with('status', 'Product has been deleted successfully');

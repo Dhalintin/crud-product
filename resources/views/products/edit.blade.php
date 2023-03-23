@@ -18,7 +18,7 @@
         </div>
 
         <div class="form ">
-            <form action="/update/{{ $product->id }}" method="POST">
+            <form action="{{ route('update', ['product' => $product->id]) }}" method="POST">
                 @csrf
                 @method('PUT')
                     <p class="pb-5 text-2xl text-blue-400">Update Product Details</p>
