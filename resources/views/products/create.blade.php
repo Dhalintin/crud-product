@@ -19,7 +19,7 @@
         </div>
 
         <div class="form ">
-            <form action="{{ route('store') }}" method="POST">
+            <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                     <p class="pb-5 text-2xl text-blue-400">Add New product</p>
                     <div class="pb-5">
@@ -35,7 +35,10 @@
                     
                     <input type="number" name="price" id="price" class="form-input" placeholder="Price" required>
                     </div> 
+
                     <div class="pb-5">
+                    <input type="file" name="image" id="image" required>
+                    </div> 
         
                     <button type="submit" class="submit-btn" >Create</button></div>
             </form>

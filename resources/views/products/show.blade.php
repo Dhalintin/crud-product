@@ -24,14 +24,11 @@
                         <button type="submit" class="border rounded-2xl p-3 border-slate-700 flex justify-center md:justify-end">Delete x</button>
                     </form>
                 @endcan
-                {{-- @if(Auth::user())
-                
-                @endauth --}}
             </div>
             
         </main>
         <div class="md:col-span-1  bg-gray-200 dark:bg-slate-900">
-            <img src="/images/product2.png" alt="" class="w-225 h-225 sm:h-48 object-cover mt-12">
+            <img src="/images/{{ $product->image }}" alt="" class="w-225 h-225 sm:h-48 object-cover mt-12">
         </div>
     </div>
 @endsection

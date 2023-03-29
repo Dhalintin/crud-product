@@ -7,7 +7,7 @@
             <div class="mt-8 grid md:grid-cols-3 gap-3">
                 @foreach($products as $product)
                     <div class="card hover:shadow-xl bg-gray-200 dark:bg-slate-800">
-                        <img src="/images/product2.png" alt="" class="w-225 h-225 sm:h-48 object-cover pl-32">
+                        <img src="/images/{{ $product->image }}" alt="" class="w-225 h-225 sm:h-48 object-cover pt-2 pl-28 pr-8">
                         <div class="m-4">
                             <span class="info">{{ $product->name }}</span>
                             <span class="block">by {{ $product->user->name }}</span>

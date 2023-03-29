@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use Image;
 
 class ProductController extends Controller
 {
@@ -66,6 +67,15 @@ class ProductController extends Controller
         $product->description = $request->validated('description');
         $product->price  = $request->validated('price');
 
+        if($request->hasfile('image')){
+            $image = $request->image;
+            $filename = time().'.'.$image->getClientOriginalExtension();
+            $location = public_path('images/'. $filename);
+            Image::make($image)->resize(800, 400)->save($location);
+
+            $product->image = $filename;
+        }
+
         $product->save();
 
         return redirect()->route('home')->with('status', 'Product has been updated successfully');;
@@ -107,6 +117,16 @@ class ProductController extends Controller
         if($request->user()->cannot('update', $product)) {
            abort(403);
         }
+
+        if($request->hasfile('image')){
+            $image = $request->image;
+            $filename = time().'.'.$image->getClientOriginalExtension();
+            $location = public_path('images/'. $filename);
+            Image::make($image)->save($location);
+
+            $product->image = $filename;
+        }
+
         
         $product = $product->update($request->validated());
 

@@ -18,7 +18,7 @@
         </div>
 
         <div class="form ">
-            <form action="{{ route('update', ['product' => $product->id]) }}" method="POST">
+            <form action="{{ route('update', ['product' => $product->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                     <p class="pb-5 text-2xl text-blue-400">Update Product Details</p>
@@ -32,10 +32,12 @@
                         <textarea  name="description" id="description" rows="5" value="{{ $product->description }}" class="form-input mb-8" placeholder="Description" required>{{ $product->description }}</textarea>
                     </div> 
                     <div class="pb-5">
-                    
-                        <input type="number" name="price" id="price" value="{{ $product->price }}" class="form-input" placeholder="Price" required>
+                    <input type="number" name="price" id="price" value="{{ $product->price }}" class="form-input" placeholder="Price" required>
                     </div> 
                     <div class="pb-5">
+                    <div class="pb-5">
+                    <input type="file" name="image" id="image" placeholder="{{ $product->image }}"/>
+                    </div>
         
                     <button type="submit" class="submit-btn" >Update</button></div>
             </form>
