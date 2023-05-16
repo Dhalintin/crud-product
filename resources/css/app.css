@@ -1,3 +1,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*Body*/
+.body {
+    @apply bg-light dark:bg-dark bg-cover dark:text-gray-300
+}
+
+/*Login, Create, Logout & Register buttons*/
+.btn {
+    @apply rounded-full py-2 px-3 text-xs font-bold cursor-pointer tracking-wider text-red-400 border-red-400 md:border-2 hover:bg-red-400 hover:text-white transition ease-out duration-1000 capitalize
+}
+
+/*Write up for Form*/
+.info-col {
+    @apply lg:col-span-2 pl-14 mr-32 text-justify
+}
+
+.title {
+    @apply pb-12 text-3xl text-blue-500 mt-16 font-bold
+}
+
+/* Form, form input  and submit button*/
+.form {
+    @apply lg:col-span-1 pl-12 bg-gray-200  dark:bg-slate-800 border rounded-lg ml-12 p-8 border-red-200
+}
+
+.form-input {
+    @apply border border-gray-300 text-sm rounded-lg  md:block md:w-full w-96 p-2.5 dark:border-blue-400 dark:bg-gray-700 dark:text-gray-200
+}
+
+.submit-btn {
+    @apply border border-gray-300 text-sm text-white rounded-lg  block md:w-full w-72 p-2.5 bg-blue-500 text-center mb-8 dark:bg-slate-800 dark:text-gray-400 cursor-pointer
+}
+
+/*Filter link*/
+.filter-btn {
+    @apply border rounded-full p-2 border-red-400 text-red-400 bg-gray-200 hover:bg-red-300 dark:bg-slate-800 hover:text-gray-100 m-1
+}

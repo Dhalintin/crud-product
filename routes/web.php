@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Models\Crud;
-use App\Http\Controllers\Crudcontroller;
+use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Route;
@@ -17,27 +17,28 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::controller(ProductController::class)->group(function () {
+    Route::get('/', 'index')->name('home');
+    Route::get('/dashboard', 'index')->name('dashboard');
+
+    Route::prefix('product')->group(function () {
+        Route::get('/view/{name?}','viewproduct');
+        Route::get('/create', 'create')->middleware(['auth', 'verified'])->name('create');
+        Route::post('/store', 'store')->middleware(['auth', 'verified'])->name('store');
+        Route::get('/edit/{product}', 'edit')->middleware(['auth', 'verified'])->name('edit');
+        Route::get('/show/{product}', 'show')->name('show');
+        Route::put('/update/{product}', 'update')->name('update');
+        Route::delete('/delete/{product}', 'destroy')->middleware(['auth', 'verified']);
+        Route::get('/filter/{type}/{value}', 'filter')->name('filter');
+       
+    });
+});
+
 //Welcome route
 Route::get('welcome', function(){
     return view('welcome');
 });
-
-Route::controller(CrudController::class)->group(function () {
-    Route::get('/','index');
-    Route::get('/view/{name?}', 'viewproduct');
-    Route::get('/create', 'create');
-    Route::post('/store', 'store');
-    Route::get('/edit/{id}', 'edit')->middleware(['auth', 'verified']);
-    Route::get('/show/{id}', 'show');
-    Route::put('/update/{id}', 'update');
-    Route::delete('/delete/{id}', 'destroy')->middleware(['auth', 'verified']);
-    Route::get('/filter/{name}', 'filter');
-});
-
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

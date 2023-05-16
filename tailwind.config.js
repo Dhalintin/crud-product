@@ -13,6 +13,11 @@ module.exports = {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+        
+            backgroundImage: {
+                'light': "url('/public/images/crudbgimage.jpg')",
+                'dark': "url('/public/images/dark-mode.png')",
+            }
         },
     },
 
